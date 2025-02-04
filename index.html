@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Wiki and Info Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Company Wiki and Info Generator</h1>
+        <div class="search-container">
+          <input
+            type="text"
+            id="companyInput"
+            placeholder="Enter company name (e.g., Apple, Microsoft, Tesla)"
+          />
+          <button onclick="generateCompanyInfo()">Generate Info</button>
+          <button id="downloadJsonBtn" class="download-button">
+            <i class="fas fa-download"></i> Download JSON
+          </button>
+        </div>
+      </header>
+
+      <div class="error" id="error"></div>
+
+      <div id="companyCard" class="company-card" style="display: none">
+        <div class="company-header">
+          <img id="companyLogo" class="company-logo" alt="Company Logo" />
+          <h2 id="companyName"></h2>
+        </div>
+        <div class="section">
+          <h3>Leadership Team</h3>
+          <div id="leadershipTeam" class="leadership-container"></div>
+        </div>
+        <div class="section">
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="label">Industry</span
+              ><span id="industry" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Products/Services</span
+              ><span id="products" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Employees</span
+              ><span id="employees" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Headquarters</span
+              ><span id="headquarters" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Established</span
+              ><span id="established" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">SEC CIK</span
+              ><span id="secCik" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Revenue</span
+              ><span id="revenue" class="value"></span>
+            </div>
+            <div class="info-item">
+              <span class="label">Stock Symbol</span
+              ><span id="stockSymbol" class="value"></span>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="social-links" id="socialLinks"></div>
+          <a id="companyUrl" class="company-url" target="_blank"></a>
+        </div>
+      </div>
+
+      <div
+        class="wiki-sections markdown-body"
+        style="background-color: #fafafa"
+        id="wikiSections"
+      ></div>
+
+      <div class="loader" id="loader">
+        <div class="loader-inner"></div>
+      </div>
+
+      <div class="graph-buttons-container" id="graphButtonsContainer"></div>
+
+      <div id="loader" class="loader" style="display: none">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </body>
+</html>
